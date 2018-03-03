@@ -54,6 +54,8 @@ html {
 
 body {
 	margin: 0;
+    font-family: 'Open Sans', 'Arial', sans-serif;
+    font-size: 20px;
 }
 
 article,
@@ -113,8 +115,7 @@ dfn {
 
 h1 {
 	font-size: 2em;
-	margin: 0.67em 0;
-}
+    }
 
 mark {
 	background: #ff0;
@@ -267,8 +268,7 @@ select,
 textarea {
 	color: #404040;
 	font-family: 'Open Sans';
-	font-size: 16px;
-	font-size: 1rem;
+	font-size: 18px;
 	line-height: 1.5;
 }
 
@@ -282,7 +282,7 @@ h6 {
 }
 
 p {
-	margin-bottom: 1.5em;
+	margin-bottom: 0.5em;
 }
 
 dfn,
@@ -496,9 +496,23 @@ input[type="color"]:focus,
 textarea:focus {
 	color: #111;
 }
-
+*/
 textarea {
 	width: 100%;
+    min-height: 140px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 992px) {
+    form {
+        width: 60%;
+    }
 }
 
 /*--------------------------------------------------------------
@@ -535,9 +549,10 @@ a:active {
 --------------------------------------------------------------*/
 .main-navigation {
 	clear: both;
-	display: block;
-	float: left;
+	display: flex;
 	width: 100%;
+    align-items: center;
+    flex-direction: column;
 }
 
 .main-navigation ul {
@@ -613,14 +628,27 @@ a:active {
 .main-navigation.toggled ul {
 	display: block;
     float: right;
+    clear: both;
+    width: 100%;
+    background: #fff;
 }
 
-@media screen and (min-width: 1024px) {
+.menu-toggle-style {
+    background-color: #fff;
+    text-transform: uppercase;
+    color: #303030;
+    font-family: 'Open Sans', 'Arial', sans-serif;
+    float: right;
+    border: 0;
+    font-size: 20px;
+}
+
+@media screen and (min-width: 800px) {
 	.menu-toggle {
 		display: none;
 	}
 	.main-navigation ul {
-		display: block;
+		display: flex;
 	}
 }
 
@@ -847,6 +875,35 @@ object {
 }
 
 /*--------------------------------------------------------------
+## Standard Classes
+--------------------------------------------------------------*/
+
+.mb10 {
+    margin-bottom: 10px;
+}
+.mb15 {
+    margin-bottom: 15px;
+}
+.mb20 {
+    margin-bottom: 20px;
+}
+.mb30 {
+    margin-bottom: 30px;
+}
+.mb50 {
+    margin-bottom: 50px;
+}
+.mb60 {
+    margin-bottom: 60px;
+}
+.hidden {
+    display: none;
+}
+.black {
+    color: #000;
+}
+
+/*--------------------------------------------------------------
 ## Galleries
 --------------------------------------------------------------*/
 .gallery {
@@ -896,3 +953,284 @@ object {
 	display: block;
 }
 
+/* Custom styles for Neary Services*/
+
+/* Navbar */
+
+.menu-menu-1-container {
+    display: inline;
+    margin: 0 auto;
+}
+
+.main-navigation a,
+.main-navigation a:visited {
+    color: #303030;
+    text-transform: uppercase;
+    padding: 10px 10px 10px 10px;
+    font-size: 20px;
+}
+.main-navigation a:hover {
+    color: #148F7C;
+}
+
+@media screen and (max-width: 799px) {
+    .main-navigation {
+        display: block;
+        position: relative;
+        z-index: 10;
+    }
+    .main-navigation a:nth-of-type(2) {
+        float: right;
+    }
+    .main-navigation li {
+        width: 100%;
+    }
+    .main-navigation a, .main-navigation a:visited {
+        padding: 6px 20px 6px 0px;
+        float: right;
+    }
+    a.navigation-button {
+        padding-top: 35px;
+    }
+}
+
+/* Content */
+
+section {
+    position: relative;
+}
+
+div#content {
+    display: block;
+    position: relative;
+}
+
+section#home-section {
+    min-height: 100vh;
+}
+
+.container {
+    padding: 60px 0px;
+    width: 90%;
+    position: relative;
+}
+
+@media screen and (min-width: 1200px) {
+    .container {
+        width: 800px;
+    }
+}
+
+@media screen and (max-width: 799px) {
+    section {
+        min-height: 50vh;
+    }
+}
+
+.btn {
+    padding: 10px;
+    color: #fff;
+    font-size: 20px;
+    text-transform: uppercase;
+    border-radius: 0px;
+}
+
+.btn-home {
+    background-color: #09925E;
+}
+
+a:visited.btn {
+    color: #fff;
+}
+
+/* Home */
+
+#home-section {
+    background-image: url(images/header-image.jpg);
+    background-size: cover;
+    position: relative;
+}
+#home-info {
+    position: absolute;
+    width: 50vw;
+}
+#home-overlay {
+    background-color: aquamarine;
+    height: 100vh;
+    width: 50vw;
+    -webkit-clip-path: polygon(0 0, 100% 0, 65% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 65% 100%, 0 100%);
+    position: absolute;
+    opacity: 0.8;
+}
+
+#home-headings {
+    padding: 80px 6vw;
+}
+#home-headings h1 {
+    text-transform: uppercase;
+    font-size: 4em;
+}
+h2 {
+    text-transform: uppercase;
+    font-size: 2em;
+}
+
+#home-section li {
+    font-size: 20px;
+}
+
+@media screen and (max-width: 799px) {
+    #home-section {
+        height: 600px;
+    }
+    #home-overlay {
+        background-color: aquamarine;
+        height: 300px;
+        width: 100vw;
+        -webkit-clip-path: none;
+        clip-path: none;
+        position: absolute;
+        bottom: 0;
+        opacity: 1;        
+    }
+    #home-text {
+        display: none;
+    }
+    #home-headings h1 {
+        font-size: calc(7vw + 10px);
+    }
+    #home-headings h2 {
+        font-size: calc(4vw + 5px);
+    }    
+    #home-info {
+        top: 300px;
+        width: 100vw;
+    }
+    #home-headings {
+        padding: 20px 40px;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    #home-headings {
+        padding: 80px 6vw;
+    }
+}
+
+/* Client */
+
+#clients-section {
+    background-image: url(images/client2.jpg);   
+}
+#clients-section .border {
+    background-color: #3677CA;
+    width: 10px;
+    height: 80%;
+    position: absolute;
+    top: 10%;
+    margin-left: -8vw;
+}
+#clients-section .horizontal-border-left {
+    background-color: #3677CA;
+    width: 10%;
+    height: 10px;
+    position: absolute;
+    top: 90%;
+    margin-left: -8vw;
+}
+#clients-section .btn {
+    background-color: #3677CA;
+}
+
+@media screen and (min-width: 1200px) {
+    #clients-overlay {
+        background-color: #E1EEFE; 
+        -webkit-clip-path: polygon(0 0, 91% 0, 77% 100%, 0 100%);
+        clip-path: polygon(0 0, 91% 0, 77% 100%, 0 100%);
+        opacity: 0.95;
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    #clients-overlay {
+        background-color: #E1EEFE; 
+        -webkit-clip-path: none;
+        clip-path: none;
+    }
+    #clients-section {
+        background-image: none;   
+    }
+}
+
+/* Candidate */
+
+#candidates-section {
+    background-image: url(images/chef3.jpg);
+}
+#candidates-section .border {
+    background-color: #FF7333;
+    width: 10px;
+    height: 80%;
+    position: absolute;
+    top: 10%;
+    margin-right: -8vw;
+    right: 0;
+}
+#candidates-section .horizontal-border-right {
+    background-color: #FF7333;
+    width: 10%;
+    height: 10px;
+    position: absolute;
+    top: 90%;
+    margin-right: -8vw;
+    right: 0;
+}
+#candidates-section .btn {
+    background-color: #FF7333;
+}
+
+@media screen and (min-width: 1200px) {
+    #candidates-overlay {
+        background-color: #FFE9DF; 
+        -webkit-clip-path: polygon(23% 0, 100% 0, 100% 100%, 9% 100%);
+        clip-path: polygon(23% 0, 100% 0, 100% 100%, 9% 100%);
+        opacity: 0.95;
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    #candidates-overlay {
+        background-color: #FFE9DF; 
+        -webkit-clip-path: none;
+        clip-path: none;
+    }
+    #candidates-section {
+        background-image: none;   
+    }
+}
+
+/* Contact */
+
+#contact-section {
+    background-color: #FFF
+}
+
+/* Footer */
+
+#footer-section {
+    background-color: #303030;
+    color: #FFF
+}
+
+#footer-section .container {
+    padding: 20px 0;
+}
+
+footer a, a:visited, a:hover, a:focus {
+    color: #FFF;
+}
+footer p {
+    margin: 0;
+    padding: 0;
+}

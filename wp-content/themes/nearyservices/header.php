@@ -29,10 +29,12 @@
 <body <?php body_class(); ?>>
 <div id="page" class="site">
     <nav id="site-navigation" class="main-navigation" role="navigation">
-        <div class="navigation-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+        <a class="navigation-button"><button class="menu-toggle menu-toggle-style" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Menu', 'iwillbeawebdeveloper' ); ?></button></a>
+        <div class="navigation-title"><img src="<?php bloginfo('template_url')?>/images/logo-resized.png"/>
         <?php if (is_front_page()) { ?>
-			<a><button class="menu-toggle menu-toggle-style" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Menu', 'iwillbeawebdeveloper' ); ?></button></a></div>    			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
+			</div>    			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
 			<?php } ?>
+        
     </nav><!-- #site-navigation -->
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'iwillbeawebdeveloper' ); ?></a>
 <!--

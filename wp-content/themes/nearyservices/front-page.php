@@ -1,223 +1,84 @@
 <!DOCTYPE html>
 <?php get_header(); ?>
+
 <head>
-    <link rel="stylesheet" href="wp-content/themes/iwillbeawebdeveloper/fonts/stylesheet.css" type="text/css" charset="utf-8" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <title>I Will Be A Web Developer</title>
+    <title>Neary Services</title>
 </head>
+
 <body>
-
-    <section class="section section-hero4">
-        <span class="anchor" id="hero">hero</span>  
-        <div class="section-hero-text-block">
-        <h1 class="section-large-heading">I will be a web developer</h1>
-        <p class="section-name">Portfolio of</p><br>
-        <p class="section-large-heading">James Winfield</p>
-        </div>      
-    </section>
-
-
-    <section class="section section-about_me">
-        <span class="anchor" id="about_me"></span>
-        <div class="section-centre-text-block">
-        <h2 class="section-medium-heading">About Me</h2>
-        <p class="main-centre-text">
-                 <?php
-$id=2;
-$post = get_post($id);
-            remove_filter('the_content', 'wpautop');  /* Removes p tag */
-$content = apply_filters('the_content', $post->post_content);
-echo $content;
-add_filter('the_content', 'wpautop');  /* Removes p tag */
-
-?>
-        </p>
+    <section id="home-section">
+        <div id="home-overlay">
+        </div>
+        <div id="home-info">
+            <div id="home-headings">
+                <h1 class="mb10">Neary Services</h1>
+                <h2 class="mb20">Chefs At Your Service</h2>
+                <ul id="home-text" class="mb30">
+                    <li>Piece of text 1</li>
+                    <li>Piece of text 2</li>
+                    <li>Piece of text 3</li>
+                    <li>Piece of text 4</li>
+                    <li>Piece of text 5</li>
+                </ul>
+                <h2><a href="tel:02039502155" class="black">02039502155</a></h2><br>
+                <a href="tel:02039502155" class="btn btn-home">Call Us Now</a>
+                <a href="mailto:info@nearyservices.co.uk" class="btn btn-home">E-mail</a>
+            </div>            
         </div>
     </section>
-    <section class="section section-my_websites">
-      <span class="anchor" id="my_websites"></span>
-        <div class="section-centre-text-block" >
-        <h2 class="section-medium-heading-my-websites">Portfolio</h2>
-        </div>
-        <div class="outer">
-        <div class="flex-container">
-       
-
-       
-                     <?php
-       $args = array( 
-    'post_type' => 'portfolio', 
-    'posts_per_page' => 12,
-    'orderby' => 'rand'
-);
-
-$portfolios = new WP_Query( $args );
-
-while ( $portfolios->have_posts() ) : $portfolios->the_post();?>
-       
-        
-            <div class="flexboxbox">
-                <a href="http://<?php the_field( "website_link" );?>" target="_blank">
-                    <?php the_post_thumbnail(''); ?>
-                    <div class="flex-overlay">
-                        <div class="flex-site-title"><?php the_title() ?></div>
-                        <div class="flex-site-details"><?php echo strip_tags(get_the_term_list( $post->ID, 'language', ' ',', ')); ?></div>
-                    </div>
-                </a>
-            </div>
-
-       <?php endwhile; ?>
-       
-       
-       
-       
-        </div>
-        </div>
-    </section>
-    <section class="section section-courses">
-        <span class="anchor" id="courses"></span>
-        <div class="section-centre-text-block " >
-        <h2 class="section-medium-heading-my-websites white-text">Courses Completed</h2>
- 
-          
-
-          
-           <p class="main-centre-text widebox">
-           <div class="flex-container widebox main-centre-text">
-           
-                                <?php
-       $args = array( 
-    'post_type' => 'courses', 
-    'posts_per_page' => 6,
-    'orderby' => 'asc'
-);
-
-$courses = new WP_Query( $args );
-
-while ( $courses->have_posts() ) : $courses->the_post();?>
-
-           <div class="flexboxbox flexcenter">
-            <?php the_title(); ?><br><br>
-            <?php 
-
-            the_content(); ?>
-            </div>
-             <?php endwhile; ?>
-            
-            
-            
-            </div>
-            </p>
-        </div>
-    </section>
-    <section class="section section-reading_list">
-        <span class="anchor" id="reading_list"></span>
-        <div class="section-centre-text-block" >
-        <h2 class="section-medium-heading-my-websites">Reading List</h2>
-           <p class="main-centre-text widebox">
-           <div class="flex-container widebox main-centre-text">
-           
-                                           <?php
-       $args = array( 
-    'post_type' => 'reading', 
-    'posts_per_page' => 2,
-    'orderby' => 'asc'
-);
-
-$reading = new WP_Query( $args );
-
-while ( $reading->have_posts() ) : $reading->the_post();?>
-           
-           
-           
-           
-           <div class="flexboxbox flexcenter">
-            <?php the_title(); ?><br><br>
-            <?php 
-
-            the_content(); ?>
-            </div>
-             <?php endwhile; ?>
-             
-             
-            </div>
-            </p>
-        </div>
-    </section>
-    <section class="section section-latest_blog_posts">
-        <span class="anchor" id="latest_blog_posts"></span>
-        <div class="section-centre-text-block" >
-        <h2 class="section-medium-heading-my-websites white-text">Latest Blog Posts</h2>
-        <div class="blog-preview-block">
-		<?php // Display blog posts on any page @ http://m0n.co/l
-
-		$temp = $wp_query; $wp_query= null;
-		$wp_query = new WP_Query(); $wp_query->query('showposts=4' . '&paged='.$paged);
-		while ($wp_query->have_posts()) : $wp_query->the_post(); ?>
-
-		<figure class="blog-preview-single"><h2><a href="<?php the_permalink(); ?>" title="Read more"><?php the_title(); ?></a></h2>
-            <?php the_excerpt(); ?></figure>
-
-		<?php endwhile; ?>
-
-
-		<?php wp_reset_postdata(); ?>
-        </div>
-
-        
-        <btn class="main-button"><a href="blog/">Read My Blog</a></btn>
+    <section id="clients-section">
+        <div id="clients-overlay">
+            <div class="container text-center">
+                <div class="border"></div>
+                <h2 class="mb60">Looking for a chef?</h2>
+                <p>Here at Neary Services we supply dedicated professional, fully vetted temporary chefs to work in your kitchen.</p><br>
+                <p>We take all of the hassle out of the traditional hiring process, and can even supply chefs the same day.</p><br>
+                <p>We have a wealth of knowledge within the catering industry, and work hard to supply chefs that are right for your business.</p><br>
+                <p>All of our Chefs have at least 5 years experience, chef whites, knives, professional tool kit, level 2 hygiene certificate and allergen certificate.</p><br>
+                <p>We also promise to beat any existing like-for-like quote for services by 15%.</p><br>
+                <p>So why not give us a try today.</p><br>
+                <div class="horizontal-border-left"></div>
+                <a href="#contact-section" class="btn btn-home scroll-to">Contact Us</a>
+            </div>    
         </div>
         
     </section>
-    <section class="section section-contact">
-       <div id="section-for-stars">
-        <span class="anchor" id="contact"></span>
-        <div class="section-centre-text-block" >
-    
-        <h2 class="section-medium-heading-my-websites white-text">Contact Me</h2>
-        <div class="main-centre-text centred-text">
-        <p>You can call me on <a href="tel:07813981920">07813 981 920</a> or <a href="mailto:hello@iwillbeawebdeveloper.co.uk">e-mail me</a>.<br><br>
-            <p>You can also find me on the following:</p>
-
-            <li><a href="https://www.twitter.com/iwillbeawebdev" target="_blank">Twitter</a></li>
-              <li><a href="http://www.iwillbeawebdeveloper.co.uk/blog/" target="_blank">Blog</a></li>
-              <li><a href="https://www.github.com/jamesthemonkeh" target="_blank">Github</a></li>
-            <li><a href="https://www.linkedin.com/in/james-winfield-b79b4211?trk=nav_responsive_tab_profile_pic" target="_blank">LinkedIn</a></li>
-              <li><a href="http://www.freecodecamp.com/jamesthemonkeh" target="_blank">FreeCodeCamp</a></li>
-          <span><p class="snippets" id="message"></p></span>
-            </p>
-            </div>
+    <section id="candidates-section">
+        <div id="candidates-overlay">
+            <div class="container text-center">
+                <div class="border"></div>
+                <h2 class="mb30">Looking for work?</h2>
+                <p>Event Chefs</p><br>
+                <p>Head Chefs</p><br>
+                <p>Sous Chefs</p><br>
+                <p>Chef De Parties</p><br>
+                <p>Happy Chefs</p><br>
+                <a href="#contact-section" class="btn btn-home scroll-to">Contact Us</a>
+                <div class="horizontal-border-right"></div>
+            </div>    
         </div>
     </section>
-    <section class="section-footer">
-
-        <?php get_footer(); ?>
+    <section id="contact-section">
+        <div id="contact-overlay">
+            <div class="container text-center">
+                <h2 class="mb60">Contact Us</h2>
+                <form>
+                    <select id="contact-form" class="mb15">
+                        <option disabled required selected>Please Select...</option>
+                        <option id="contact-form-chefs">Looking For Chefs</option>
+                        <option id="contact-form-work">Looking For Work</option>
+                        <option id="contact-form-other">Other</option>
+                    </select>
+                    <input id="contact-form-field-name" type="text" name="name" class="mb15" placeholder="Name" required>
+                    <input id="contact-form-field-company" type="text" name="firstname" placeholder="Company Name" class="mb15 hidden">
+                    <input id="contact-form-field-email" type="email" name="email" placeholder="E-mail" class="mb15" required>
+                    <textarea id="contact-form-field-message" placeholder="Please enter message..." class="mb30"></textarea>
+                </form>                
+                <a href="#contact-section" class="btn btn-home scroll-to">Send</a>
+            </div>    
+        </div>
     </section>
 
-    <script>
-        $(document).ready(function() {
-            $(window).resize(function() {
-  if (window.innerWidth < 1024) {
-     ($('.menu-item').addClass('full-width'));
-      
-  }
- else {
-    ($('.menu-item').removeClass('full-width'));
- }
-});
-                
-        });
-        
-        
-        
-        $(document).ready(function() {
-            $('.menu-item').click(function() {
-                $('#site-navigation').removeClass('toggled');
-            });
-        });
-        
-        
+<?php get_footer(); ?>
 
-    </script>
-    
 </body>

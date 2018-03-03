@@ -101,14 +101,38 @@ add_action( 'widgets_init', 'iwillbeawebdeveloper_widgets_init' );
 /**
  * Enqueue scripts and styles.
  */
+
+function theme_styles() {
+
+	wp_register_style( 'bootstrap-css', '//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', false, NULL, 'all' );
+    wp_enqueue_style( 'bootstrap-css' );
+
+}
+
+add_action( 'wp_enqueue_scripts', 'theme_styles');
+
+function theme_js() {
+
+	global $wp_scripts;
+
+	wp_enqueue_script( 'bootstrap_js', '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js');
+
+}
+
+add_action( 'wp_enqueue_scripts', 'theme_js');
+
 function iwillbeawebdeveloper_scripts() {
 	wp_enqueue_style( 'iwillbeawebdeveloper-style', get_stylesheet_uri() );
     
     wp_enqueue_style('important', get_template_directory_uri() . '/css/main-style.css');
     
     wp_enqueue_style( 'iwillbeawebdeveloper-google-fonts', 'https://fonts.googleapis.com/css?family=Bungee+Inline|Bungee+Shade|Graduate|Parisienne|Anton|Droid+Sans|Open+Sans');
+    
+    wp_enqueue_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js', array(), null, true);
 
 	wp_enqueue_script( 'iwillbeawebdeveloper-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+    
+	wp_enqueue_script( 'iwillbeawebdeveloper-neary', get_template_directory_uri() . '/js/neary.js', array(), '20151215', true );
 
 	wp_enqueue_script( 'iwillbeawebdeveloper-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
@@ -163,22 +187,3 @@ return $query;
 
 add_filter('pre_get_posts','SearchFilter');
 
-function theme_styles() {
-
-	wp_enqueue_style( 'bootstrap_css', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css' );
-	wp_enqueue_style( 'main_css', get_template_directory_uri() . '/style.css' );
-
-}
-
-add_action( 'wp_enqueue_scripts', 'theme_styles');
-
-function theme_js() {
-
-	global $wp_scripts;
-
-	wp_enqueue_script( 'bootstrap_js', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js');
-	wp_enqueue_script( 'my_custom_js', get_template_directory_uri() . '/js/scripts.js');
-
-}
-
-add_action( 'wp_enqueue_scripts', 'theme_js');
